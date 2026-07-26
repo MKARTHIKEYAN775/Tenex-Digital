@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // 6. Horizontal Straight Carousel with Alternating Tilt Angles for "Our Services" (Laptop View Only)
+    // 6. Horizontal Carousel for "Our Services" (Supports Mobile Touch Swipe & Laptop Tilt Layout)
     function initServicesArcCarousel() {
         const track = document.querySelector('.services-track');
         if (!track) return;
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (offset < -totalCards / 2) offset += totalCards;
 
                 if (isMobile) {
-                    // Mobile view untouched - retains original arched mobile logic
+                    // Mobile view arched logic
                     const xOffsetStep = 180;
                     if (Math.abs(offset) <= 2) {
                         card.style.opacity = '1';
@@ -188,22 +188,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         card.style.zIndex = '0';
                     }
                 } else {
-                    // Laptop view: Straight horizontal baseline with alternating custom tilt angles per your sketch
-                    const xOffsetStep = 320; // Spacing between cards on desktop
+                    // Laptop view: Straight horizontal baseline with alternating custom tilt angles
+                    const xOffsetStep = 320; 
 
                     if (Math.abs(offset) <= 2) {
                         card.style.opacity = '1';
                         card.style.pointerEvents = 'auto';
 
                         const x = offset * xOffsetStep;
-                        const y = 0; // Completely straight horizontal line
+                        const y = 0; 
                         
-                        // Precise matching layout as shown in your reference illustration:
-                        // Center = 0deg (straight)
-                        // Immediate Left (offset -1) = tilted inwards/away matching sketch
-                        // Immediate Right (offset 1) = tilted inwards matching sketch
-                        // Outer Left (offset -2) = opposite angle tilt
-                        // Outer Right (offset 2) = opposite angle tilt
                         let rotate = 0;
                         if (offset === 0) rotate = 0;
                         else if (offset === -1) rotate = -18; 
@@ -256,6 +250,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateServicesLayout();
             });
         });
+
+        // Added touch swipe support for mobile view
+        let startX = 0;
+        track.addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            let endX = e.changedTouches[0].screenX;
+            if (endX < startX - 40) {
+                activeIndex = (activeIndex + 1) % totalCards;
+                updateServicesLayout();
+            } else if (endX > startX + 40) {
+                activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+                updateServicesLayout();
+            }
+        }, { passive: true });
     }
 
     // 7. Why Choose Us Mobile Arc Carousel
