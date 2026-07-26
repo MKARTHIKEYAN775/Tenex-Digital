@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // 6. Horizontal Curved Arc Carousel Engine for "Our Services"
+    // 6. Horizontal Straight Carousel with Alternating Tilt Angles for "Our Services" (Laptop View Only)
     function initServicesArcCarousel() {
         const track = document.querySelector('.services-track');
         if (!track) return;
@@ -147,86 +147,115 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i === 0) dot.classList.add('active');
                 dot.addEventListener('click', () => {
                     activeIndex = i;
-                    updateServicesArc();
+                    updateServicesLayout();
                 });
                 dotsContainer.appendChild(dot);
                 dots.push(dot);
             }
         }
 
-        function updateServicesArc() {
+        function updateServicesLayout() {
             const isMobile = window.innerWidth <= 768;
-            const xOffsetStep = isMobile ? 180 : 250;
 
             cards.forEach((card, i) => {
                 let offset = i - activeIndex;
                 if (offset > totalCards / 2) offset -= totalCards;
                 if (offset < -totalCards / 2) offset += totalCards;
 
-                if (Math.abs(offset) <= 2) {
-                    card.style.opacity = '1';
-                    card.style.pointerEvents = 'auto';
-                    
-                    const x = offset * xOffsetStep; 
-                    const y = Math.abs(offset) * (isMobile ? 18 : 28); 
-                    const rotate = offset * (isMobile ? 8 : 12); 
-                    const scale = 1 - Math.abs(offset) * 0.15; 
-                    const zIndex = 10 - Math.abs(offset);
-
-                    card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
-                    card.style.zIndex = zIndex;
-
-                    if (offset === 0) {
-                        card.classList.add('active');
-                        card.style.filter = 'brightness(1.1)';
+                if (isMobile) {
+                    // Mobile view untouched - retains original arched mobile logic
+                    const xOffsetStep = 180;
+                    if (Math.abs(offset) <= 2) {
+                        card.style.opacity = '1';
+                        card.style.pointerEvents = 'auto';
+                        const x = offset * xOffsetStep;
+                        const y = Math.abs(offset) * 18;
+                        const rotate = offset * 8;
+                        const scale = 1 - Math.abs(offset) * 0.15;
+                        card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
+                        card.style.zIndex = 10 - Math.abs(offset);
+                        if (offset === 0) {
+                            card.classList.add('active');
+                            card.style.filter = 'brightness(1.1)';
+                        } else {
+                            card.classList.remove('active');
+                            card.style.filter = 'brightness(0.5) blur(1px)';
+                        }
                     } else {
-                        card.classList.remove('active');
-                        card.style.filter = 'brightness(0.5) blur(1px)';
+                        card.style.opacity = '0';
+                        card.style.pointerEvents = 'none';
+                        card.style.transform = 'translateX(0px) translateY(50px) scale(0.5)';
+                        card.style.zIndex = '0';
                     }
                 } else {
-                    card.style.opacity = '0';
-                    card.style.pointerEvents = 'none';
-                    card.style.transform = 'translateX(0px) translateY(50px) scale(0.5)';
-                    card.style.zIndex = '0';
+                    // Laptop view: Straight horizontal baseline with alternating custom tilt angles per your sketch
+                    const xOffsetStep = 320; // Spacing between cards on desktop
+
+                    if (Math.abs(offset) <= 2) {
+                        card.style.opacity = '1';
+                        card.style.pointerEvents = 'auto';
+
+                        const x = offset * xOffsetStep;
+                        const y = 0; // Completely straight horizontal line
+                        
+                        // Precise matching layout as shown in your reference illustration:
+                        // Center = 0deg (straight)
+                        // Immediate Left (offset -1) = tilted inwards/away matching sketch
+                        // Immediate Right (offset 1) = tilted inwards matching sketch
+                        // Outer Left (offset -2) = opposite angle tilt
+                        // Outer Right (offset 2) = opposite angle tilt
+                        let rotate = 0;
+                        if (offset === 0) rotate = 0;
+                        else if (offset === -1) rotate = -18; 
+                        else if (offset === 1) rotate = 18;  
+                        else if (offset === -2) rotate = 15; 
+                        else if (offset === 2) rotate = -15; 
+
+                        const scale = 1 - Math.abs(offset) * 0.12;
+                        const zIndex = 10 - Math.abs(offset);
+
+                        card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
+                        card.style.zIndex = zIndex;
+
+                        if (offset === 0) {
+                            card.classList.add('active');
+                            card.style.filter = 'brightness(1.1)';
+                        } else {
+                            card.classList.remove('active');
+                            card.style.filter = 'brightness(0.6) blur(0.5px)';
+                        }
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.pointerEvents = 'none';
+                        card.style.transform = 'translateX(0px) translateY(0px) scale(0.4)';
+                        card.style.zIndex = '0';
+                    }
                 }
             });
 
             dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
         }
 
-        updateServicesArc();
-        window.addEventListener('resize', updateServicesArc);
+        updateServicesLayout();
+        window.addEventListener('resize', updateServicesLayout);
 
         if (nextBtn && prevBtn) {
             nextBtn.addEventListener('click', () => {
                 activeIndex = (activeIndex + 1) % totalCards;
-                updateServicesArc();
+                updateServicesLayout();
             });
             prevBtn.addEventListener('click', () => {
                 activeIndex = (activeIndex - 1 + totalCards) % totalCards;
-                updateServicesArc();
+                updateServicesLayout();
             });
         }
 
         cards.forEach((card, i) => {
             card.addEventListener('click', () => {
                 activeIndex = i;
-                updateServicesArc();
+                updateServicesLayout();
             });
         });
-
-        let startX = 0;
-        track.addEventListener('touchstart', (e) => startX = e.changedTouches[0].screenX, { passive: true });
-        track.addEventListener('touchend', (e) => {
-            let endX = e.changedTouches[0].screenX;
-            if (endX < startX - 40) {
-                activeIndex = (activeIndex + 1) % totalCards;
-                updateServicesArc();
-            } else if (endX > startX + 40) {
-                activeIndex = (activeIndex - 1 + totalCards) % totalCards;
-                updateServicesArc();
-            }
-        }, { passive: true });
     }
 
     // 7. Why Choose Us Mobile Arc Carousel
@@ -420,4 +449,3 @@ document.addEventListener('DOMContentLoaded', () => {
     initTestimonialsSlider();
 
 });
-
