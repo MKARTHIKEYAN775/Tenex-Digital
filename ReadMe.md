@@ -2,6 +2,8 @@ php -S localhost:8000
 
 http://localhost:8000/contact.html
 
+php -S 0.0.0.0:8000
+
 CREATE TABLE contact_submissions (
     id SERIAL PRIMARY KEY,
     full_name VARCHAR(150) NOT NULL,
