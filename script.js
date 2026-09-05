@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // 6. Horizontal Carousel for "Our Services" (Supports Mobile Touch Swipe & Laptop Tilt Layout)
+    // 6. Containerized Expanding Accordion for "Our Services" (Frosted Glass & Background Textures)
     function initServicesArcCarousel() {
         const track = document.querySelector('.services-track');
         if (!track) return;
@@ -147,111 +147,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i === 0) dot.classList.add('active');
                 dot.addEventListener('click', () => {
                     activeIndex = i;
-                    updateServicesLayout();
+                    updateServicesAccordion();
                 });
                 dotsContainer.appendChild(dot);
                 dots.push(dot);
             }
         }
 
-        function updateServicesLayout() {
-            const isMobile = window.innerWidth <= 768;
-
+        function updateServicesAccordion() {
             cards.forEach((card, i) => {
-                let offset = i - activeIndex;
-                if (offset > totalCards / 2) offset -= totalCards;
-                if (offset < -totalCards / 2) offset += totalCards;
-
-                if (isMobile) {
-                    // Mobile view arched logic
-                    const xOffsetStep = 180;
-                    if (Math.abs(offset) <= 2) {
-                        card.style.opacity = '1';
-                        card.style.pointerEvents = 'auto';
-                        const x = offset * xOffsetStep;
-                        const y = Math.abs(offset) * 18;
-                        const rotate = offset * 8;
-                        const scale = 1 - Math.abs(offset) * 0.15;
-                        card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
-                        card.style.zIndex = 10 - Math.abs(offset);
-                        if (offset === 0) {
-                            card.classList.add('active');
-                            card.style.filter = 'brightness(1.1)';
-                        } else {
-                            card.classList.remove('active');
-                            card.style.filter = 'brightness(0.5) blur(1px)';
-                        }
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.pointerEvents = 'none';
-                        card.style.transform = 'translateX(0px) translateY(50px) scale(0.5)';
-                        card.style.zIndex = '0';
-                    }
+                if (i === activeIndex) {
+                    card.classList.add('active');
                 } else {
-                    // Laptop view: Straight horizontal baseline with alternating custom tilt angles
-                    const xOffsetStep = 320; 
-
-                    if (Math.abs(offset) <= 2) {
-                        card.style.opacity = '1';
-                        card.style.pointerEvents = 'auto';
-
-                        const x = offset * xOffsetStep;
-                        const y = 0; 
-                        
-                        let rotate = 0;
-                        if (offset === 0) rotate = 0;
-                        else if (offset === -1) rotate = -18; 
-                        else if (offset === 1) rotate = 18;  
-                        else if (offset === -2) rotate = 15; 
-                        else if (offset === 2) rotate = -15; 
-
-                        const scale = 1 - Math.abs(offset) * 0.12;
-                        const zIndex = 10 - Math.abs(offset);
-
-                        card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
-                        card.style.zIndex = zIndex;
-
-                        if (offset === 0) {
-                            card.classList.add('active');
-                            card.style.filter = 'brightness(1.1)';
-                        } else {
-                            card.classList.remove('active');
-                            card.style.filter = 'brightness(0.6) blur(0.5px)';
-                        }
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.pointerEvents = 'none';
-                        card.style.transform = 'translateX(0px) translateY(0px) scale(0.4)';
-                        card.style.zIndex = '0';
-                    }
+                    card.classList.remove('active');
                 }
             });
 
-            dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
+            if (dots.length > 0) {
+                dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
+            }
         }
 
-        updateServicesLayout();
-        window.addEventListener('resize', updateServicesLayout);
+        updateServicesAccordion();
 
         if (nextBtn && prevBtn) {
             nextBtn.addEventListener('click', () => {
                 activeIndex = (activeIndex + 1) % totalCards;
-                updateServicesLayout();
+                updateServicesAccordion();
             });
             prevBtn.addEventListener('click', () => {
                 activeIndex = (activeIndex - 1 + totalCards) % totalCards;
-                updateServicesLayout();
+                updateServicesAccordion();
             });
         }
 
+        // Allow clicking directly on any thin card strip to expand it instantly
         cards.forEach((card, i) => {
             card.addEventListener('click', () => {
                 activeIndex = i;
-                updateServicesLayout();
+                updateServicesAccordion();
             });
         });
 
-        // Added touch swipe support for mobile view
+        // Touch swipe support for mobile users
         let startX = 0;
         track.addEventListener('touchstart', (e) => {
             startX = e.changedTouches[0].screenX;
@@ -261,10 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let endX = e.changedTouches[0].screenX;
             if (endX < startX - 40) {
                 activeIndex = (activeIndex + 1) % totalCards;
-                updateServicesLayout();
+                updateServicesAccordion();
             } else if (endX > startX + 40) {
                 activeIndex = (activeIndex - 1 + totalCards) % totalCards;
-                updateServicesLayout();
+                updateServicesAccordion();
             }
         }, { passive: true });
     }
