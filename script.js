@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isMobile = window.innerWidth <= 768;
 
             cards.forEach((card, i) => {
-                card.classList.remove('active', 'mobile-visible-prev', 'mobile-visible-next');
+                card.classList.remove('active');
                 card.style.transform = '';
                 card.style.opacity = '';
                 card.style.zIndex = '';
@@ -166,29 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (i === activeIndex) {
                     card.classList.add('active');
-                    if (isMobile) {
-                        card.style.opacity = '1';
-                        card.style.pointerEvents = 'auto';
-                        card.style.transform = 'translateX(0px) translateY(0px) scale(1.05)';
-                        card.style.zIndex = '20';
-                    }
-                } else if (isMobile) {
-                    const prevIndex = (activeIndex - 1 + totalCards) % totalCards;
-                    const nextIndex = (activeIndex + 1) % totalCards;
-                    
-                    if (i === prevIndex) {
-                        card.classList.add('mobile-visible-prev');
-                        card.style.opacity = '0.5';
-                        card.style.pointerEvents = 'auto';
-                        card.style.transform = 'translateX(-120px) translateY(12px) rotate(-8deg) scale(0.82)';
-                        card.style.zIndex = '10';
-                    } else if (i === nextIndex) {
-                        card.classList.add('mobile-visible-next');
-                        card.style.opacity = '0.5';
-                        card.style.pointerEvents = 'auto';
-                        card.style.transform = 'translateX(120px) translateY(12px) rotate(8deg) scale(0.82)';
-                        card.style.zIndex = '10';
-                    }
                 }
             });
 
@@ -211,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Allow clicking directly on any card strip to expand it instantly
         cards.forEach((card, i) => {
             card.addEventListener('click', () => {
                 activeIndex = i;
@@ -219,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Touch swipe support
         let startX = 0;
         track.addEventListener('touchstart', (e) => {
             startX = e.changedTouches[0].screenX;
@@ -237,84 +212,179 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
-    // 7. Why Choose Us Mobile Arc Carousel
+    // 7. Why Choose Us Mobile Arc Carousel & Services Mobile Arc Carousel
     function initArcCarousel() {
+        // Why Choose Us Arc
         const track = document.querySelector('.arc-track');
-        if (!track) return;
-        const cards = Array.from(track.querySelectorAll('.arc-card'));
-        const nextBtn = document.querySelector('.arc-next');
-        const prevBtn = document.querySelector('.arc-prev');
-        const dotsContainer = document.querySelector('.arc-dots');
-        let activeIndex = 0;
-        const totalCards = cards.length;
+        if (track) {
+            const cards = Array.from(track.querySelectorAll('.arc-card'));
+            const nextBtn = document.querySelector('.arc-next');
+            const prevBtn = document.querySelector('.arc-prev');
+            const dotsContainer = document.querySelector('.arc-dots');
+            let activeIndex = 0;
+            const totalCards = cards.length;
 
-        let dots = [];
-        if (dotsContainer) {
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalCards; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('slider-dot');
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    activeIndex = i;
+            let dots = [];
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalCards; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('slider-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        activeIndex = i;
+                        updateArc();
+                    });
+                    dotsContainer.appendChild(dot);
+                    dots.push(dot);
+                }
+            }
+
+            function updateArc() {
+                cards.forEach((card, i) => {
+                    let offset = i - activeIndex;
+                    if (offset > totalCards / 2) offset -= totalCards;
+                    if (offset < -totalCards / 2) offset += totalCards;
+
+                    if (Math.abs(offset) <= 2) {
+                        card.style.opacity = '1';
+                        card.style.pointerEvents = 'auto';
+                        const x = offset * 70; 
+                        const y = Math.abs(offset) * 22; 
+                        const rotate = offset * 14; 
+                        const scale = 1 - Math.abs(offset) * 0.15; 
+                        card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
+                        card.style.zIndex = 10 - Math.abs(offset);
+                        card.style.filter = offset === 0 ? 'brightness(1.1)' : 'brightness(0.5) blur(1px)';
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.pointerEvents = 'none';
+                    }
+                });
+
+                dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
+            }
+            updateArc();
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    activeIndex = (activeIndex + 1) % totalCards;
                     updateArc();
                 });
-                dotsContainer.appendChild(dot);
-                dots.push(dot);
             }
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+                    updateArc();
+                });
+            }
+
+            let startX = 0;
+            track.addEventListener('touchstart', (e) => startX = e.changedTouches[0].screenX, { passive: true });
+            track.addEventListener('touchend', (e) => {
+                let endX = e.changedTouches[0].screenX;
+                if (endX < startX - 40) {
+                    activeIndex = (activeIndex + 1) % totalCards;
+                    updateArc();
+                } else if (endX > startX + 40) {
+                    activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+                    updateArc();
+                }
+            }, { passive: true });
         }
 
-        function updateArc() {
-            cards.forEach((card, i) => {
-                let offset = i - activeIndex;
-                if (offset > totalCards / 2) offset -= totalCards;
-                if (offset < -totalCards / 2) offset += totalCards;
-
-                if (Math.abs(offset) <= 2) {
-                    card.style.opacity = '1';
-                    card.style.pointerEvents = 'auto';
-                    const x = offset * 70; 
-                    const y = Math.abs(offset) * 22; 
-                    const rotate = offset * 14; 
-                    const scale = 1 - Math.abs(offset) * 0.15; 
-                    card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
-                    card.style.zIndex = 10 - Math.abs(offset);
-                    card.style.filter = offset === 0 ? 'brightness(1.1)' : 'brightness(0.5) blur(1px)';
+        // Services Mobile Arc Carousel
+        const servicesTrack = document.querySelector('.services-arc-track');
+        const servicesWrapper = document.querySelector('.mobile-services-arc-wrapper');
+        if (servicesTrack && servicesWrapper) {
+            if (window.innerWidth <= 768) {
+                servicesWrapper.style.display = 'block';
+            }
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768) {
+                    servicesWrapper.style.display = 'block';
                 } else {
-                    card.style.opacity = '0';
-                    card.style.pointerEvents = 'none';
+                    servicesWrapper.style.display = 'none';
                 }
             });
 
-            dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
-        }
-        updateArc();
+            const cards = Array.from(servicesTrack.querySelectorAll('.services-arc-card'));
+            const nextBtn = document.querySelector('.services-arc-next');
+            const prevBtn = document.querySelector('.services-arc-prev');
+            const dotsContainer = document.querySelector('.services-arc-dots');
+            let activeIndex = 0;
+            const totalCards = cards.length;
 
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                activeIndex = (activeIndex + 1) % totalCards;
-                updateArc();
-            });
-        }
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                activeIndex = (activeIndex - 1 + totalCards) % totalCards;
-                updateArc();
-            });
-        }
-
-        let startX = 0;
-        track.addEventListener('touchstart', (e) => startX = e.changedTouches[0].screenX, { passive: true });
-        track.addEventListener('touchend', (e) => {
-            let endX = e.changedTouches[0].screenX;
-            if (endX < startX - 40) {
-                activeIndex = (activeIndex + 1) % totalCards;
-                updateArc();
-            } else if (endX > startX + 40) {
-                activeIndex = (activeIndex - 1 + totalCards) % totalCards;
-                updateArc();
+            let dots = [];
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalCards; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('slider-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        activeIndex = i;
+                        updateServicesArc();
+                    });
+                    dotsContainer.appendChild(dot);
+                    dots.push(dot);
+                }
             }
-        }, { passive: true });
+
+            function updateServicesArc() {
+                cards.forEach((card, i) => {
+                    let offset = i - activeIndex;
+                    if (offset > totalCards / 2) offset -= totalCards;
+                    if (offset < -totalCards / 2) offset += totalCards;
+
+                    if (Math.abs(offset) <= 2) {
+                        card.style.opacity = '1';
+                        card.style.pointerEvents = 'auto';
+                        const x = offset * 70; 
+                        const y = Math.abs(offset) * 22; 
+                        const rotate = offset * 14; 
+                        const scale = 1 - Math.abs(offset) * 0.15; 
+                        card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${rotate}deg) scale(${scale})`;
+                        card.style.zIndex = 10 - Math.abs(offset);
+                        card.style.filter = offset === 0 ? 'brightness(1.1)' : 'brightness(0.5) blur(1px)';
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.pointerEvents = 'none';
+                    }
+                });
+
+                if (dots.length > 0) {
+                    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === activeIndex));
+                }
+            }
+            updateServicesArc();
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    activeIndex = (activeIndex + 1) % totalCards;
+                    updateServicesArc();
+                });
+            }
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+                    updateServicesArc();
+                });
+            }
+
+            let startX = 0;
+            servicesTrack.addEventListener('touchstart', (e) => startX = e.changedTouches[0].screenX, { passive: true });
+            servicesTrack.addEventListener('touchend', (e) => {
+                let endX = e.changedTouches[0].screenX;
+                if (endX < startX - 40) {
+                    activeIndex = (activeIndex + 1) % totalCards;
+                    updateServicesArc();
+                } else if (endX > startX + 40) {
+                    activeIndex = (activeIndex - 1 + totalCards) % totalCards;
+                    updateServicesArc();
+                }
+            }, { passive: true });
+        }
     }
 
     // 8. 3D COVERFLOW PANORAMA ENGINE (Our Process)
