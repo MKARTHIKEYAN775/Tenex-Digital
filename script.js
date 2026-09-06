@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // 6. Containerized Expanding Accordion for "Our Services" (Frosted Glass & Background Textures)
+    // 6. Responsive Services Carousel (Desktop Accordion / Mobile Arc Carousel)
     function initServicesArcCarousel() {
         const track = document.querySelector('.services-track');
         if (!track) return;
@@ -155,11 +155,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function updateServicesAccordion() {
+            const isMobile = window.innerWidth <= 768;
+
             cards.forEach((card, i) => {
+                card.classList.remove('active', 'mobile-visible-prev', 'mobile-visible-next');
+                card.style.transform = '';
+                card.style.opacity = '';
+                card.style.zIndex = '';
+                card.style.pointerEvents = '';
+
                 if (i === activeIndex) {
                     card.classList.add('active');
-                } else {
-                    card.classList.remove('active');
+                    if (isMobile) {
+                        card.style.opacity = '1';
+                        card.style.pointerEvents = 'auto';
+                        card.style.transform = 'translateX(0px) translateY(0px) scale(1.05)';
+                        card.style.zIndex = '20';
+                    }
+                } else if (isMobile) {
+                    const prevIndex = (activeIndex - 1 + totalCards) % totalCards;
+                    const nextIndex = (activeIndex + 1) % totalCards;
+                    
+                    if (i === prevIndex) {
+                        card.classList.add('mobile-visible-prev');
+                        card.style.opacity = '0.5';
+                        card.style.pointerEvents = 'auto';
+                        card.style.transform = 'translateX(-120px) translateY(12px) rotate(-8deg) scale(0.82)';
+                        card.style.zIndex = '10';
+                    } else if (i === nextIndex) {
+                        card.classList.add('mobile-visible-next');
+                        card.style.opacity = '0.5';
+                        card.style.pointerEvents = 'auto';
+                        card.style.transform = 'translateX(120px) translateY(12px) rotate(8deg) scale(0.82)';
+                        card.style.zIndex = '10';
+                    }
                 }
             });
 
@@ -169,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updateServicesAccordion();
+        window.addEventListener('resize', updateServicesAccordion);
 
         if (nextBtn && prevBtn) {
             nextBtn.addEventListener('click', () => {
@@ -181,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Allow clicking directly on any thin card strip to expand it instantly
+        // Allow clicking directly on any card strip to expand it instantly
         cards.forEach((card, i) => {
             card.addEventListener('click', () => {
                 activeIndex = i;
@@ -189,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Touch swipe support for mobile users
+        // Touch swipe support
         let startX = 0;
         track.addEventListener('touchstart', (e) => {
             startX = e.changedTouches[0].screenX;
@@ -378,7 +408,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let startX = 0;
-        track.addEventListener('touchstart', (e) => startX = e.changedTouches[0].screenX, { passive: true });
+        track.addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
         track.addEventListener('touchend', (e) => {
             let endX = e.changedTouches[0].screenX;
             if (endX < startX - 40) {

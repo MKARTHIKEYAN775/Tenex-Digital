@@ -12,8 +12,8 @@
     
     --glass-bg: rgba(255, 255, 255, 0.04); 
     --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-blur: blur(25px);
-    --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    --glass-blur: blur(20px);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -312,7 +312,7 @@ input:checked + .slider:before { transform: translateX(26px); }
 .mobile-why-arc-wrapper, .mobile-stats-section { display: none; }
 
 /* ========================================= */
-/* HIGH-END FROSTED GLASS ACCORDION SERVICES */
+/* DESKTOP ACCORDION SERVICES SECTION        */
 /* ========================================= */
 .services-slider-wrapper {
     position: relative;
@@ -354,7 +354,7 @@ input:checked + .slider:before { transform: translateX(26px); }
 }
 
 .services-track .service-card {
-    flex: 0 0 32px; /* Thin collapsed strip width on desktop */
+    flex: 0 0 32px; 
     background: rgba(255, 255, 255, 0.035);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: 1px solid rgba(255, 255, 255, 0.22);
@@ -367,8 +367,7 @@ input:checked + .slider:before { transform: translateX(26px); }
                 background 0.4s ease, 
                 border-color 0.4s ease, 
                 padding 0.5s ease,
-                opacity 0.4s ease,
-                display 0.4s ease;
+                opacity 0.4s ease;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -406,7 +405,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     z-index: 1;
 }
 
-/* Hide paragraphs and links on thin cards */
+/* Hide paragraphs and links on inactive desktop cards */
 .services-track .service-card p,
 .services-track .service-card a {
     opacity: 0;
@@ -417,7 +416,6 @@ input:checked + .slider:before { transform: translateX(26px); }
     display: none;
 }
 
-/* Keep title upright and cleanly truncated in thin mode */
 .services-track .service-card h3 { 
     font-size: 0.68rem; 
     color: var(--text-main); 
@@ -431,25 +429,6 @@ input:checked + .slider:before { transform: translateX(26px); }
     margin-top: 8px;
     opacity: 0.85;
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-}
-
-.services-track .service-card .service-icon {
-    height: 26px; 
-    width: 26px; 
-    background: rgba(255, 126, 95, 0.2); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    border-radius: 6px; 
-    margin: 0 auto; 
-    color: var(--accent-orange);
-    flex-shrink: 0;
-}
-
-.services-track .service-card .service-icon img {
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
 }
 
 /* Active / Expanded Main Card State */
@@ -500,18 +479,6 @@ input:checked + .slider:before { transform: translateX(26px); }
     text-shadow: 0 1px 4px rgba(0,0,0,0.8);
 }
 
-.services-track .service-card.active .service-icon {
-    margin: 0 0 20px 0;
-    width: 52px;
-    height: 52px;
-    background: rgba(255,126,95,0.25);
-}
-
-.services-track .service-card.active .service-icon img {
-    width: 28px;
-    height: 28px;
-}
-
 .services-track .service-card.active a {
     display: inline-block;
     color: var(--accent-orange);
@@ -523,49 +490,162 @@ input:checked + .slider:before { transform: translateX(26px); }
 }
 
 /* ========================================= */
-/* MOBILE SPECIFIC ACCORDION FIX (NO CONGESTION) */
+/* MOBILE VIEW: NO BACKGROUND IMAGE & LEFT-ALIGNED */
 /* ========================================= */
 @media (max-width: 768px) {
-    .services-slider-container {
-        height: 420px;
-        padding: 12px 45px;
+    .services-slider-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 10px 0 20px 0;
     }
-    
-    .services-track .service-card {
-        flex: 0 0 0px; /* Fully collapse inactive cards on mobile so they don't congest */
-        width: 0;
+
+    /* Remove outer container box completely on mobile */
+    .services-slider-container {
+        width: 100%;
+        max-width: 100%;
+        height: 380px;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
         padding: 0;
-        margin: 0;
-        border: none;
+        overflow: hidden;
+    }
+
+    .services-track {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        overflow: visible;
+    }
+
+    /* Base mobile card style matching Why Choose Brandify */
+    .services-track .service-card {
+        position: absolute;
+        width: 260px;
+        height: 330px;
+        background: rgba(18, 20, 28, 0.95); /* Solid dark background, no watermark */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 18px 16px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        cursor: pointer;
         opacity: 0;
         pointer-events: none;
-        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start !important;
+        text-align: left !important;
     }
 
+    /* Completely remove background image on mobile */
+    .services-track .service-card::before {
+        display: none !important;
+    }
+
+    .services-track .service-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Strict left alignment and font sizing for mobile peeking/active text */
+    .services-track .service-card h3 {
+        font-size: 1.05rem !important;
+        margin-bottom: 8px !important;
+        color: #fff !important;
+        writing-mode: horizontal-tb !important;
+        transform: none !important;
+        text-align: left !important;
+        width: 100%;
+        white-space: normal !important;
+        opacity: 1 !important;
+    }
+
+    .services-track .service-card p {
+        font-size: 0.78rem !important;
+        color: var(--text-muted) !important;
+        line-height: 1.4 !important;
+        text-align: left !important;
+        width: 100%;
+        display: none;
+    }
+
+    .services-track .service-card a {
+        display: none;
+        text-align: left !important;
+    }
+
+    /* Active Center Card (Slide 2) */
     .services-track .service-card.active {
-        flex: 1 1 100%; /* Active card takes 100% of the mobile container width */
-        opacity: 1;
-        pointer-events: auto;
-        visibility: visible;
-        padding: 30px 20px;
-    }
-
-    .services-track .service-card.active h3 {
-        font-size: 1.5rem;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateX(0px) translateY(0px) scale(1.05) !important;
+        z-index: 20 !important;
+        border-color: var(--accent-orange) !important;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 35px rgba(255,126,95,0.4) !important;
+        align-items: flex-start !important;
+        text-align: left !important;
     }
 
     .services-track .service-card.active p {
-        font-size: 0.9rem;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        text-align: left !important;
+    }
+
+    .services-track .service-card.active a {
+        display: inline-block !important;
+        margin-top: 8px !important;
+        font-size: 0.8rem !important;
+        text-align: left !important;
+    }
+
+    /* Peeking Neighbor Cards (Slide 1 and Slide 3) */
+    .services-track .service-card.mobile-visible-prev {
+        opacity: 0.5 !important;
+        pointer-events: auto !important;
+        transform: translateX(-120px) translateY(12px) rotate(-8deg) scale(0.82) !important;
+        z-index: 10 !important;
+        filter: brightness(0.6) blur(0.5px) !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .services-track .service-card.mobile-visible-next {
+        opacity: 0.5 !important;
+        pointer-events: auto !important;
+        transform: translateX(120px) translateY(12px) rotate(8deg) scale(0.82) !important;
+        z-index: 10 !important;
+        filter: brightness(0.6) blur(0.5px) !important;
+        align-items: flex-start !important;
+        text-align: left !important;
     }
 }
 
-/* Navigation Arrow Buttons PERMANENTLY ORANGE */
+/* ========================================= */
+/* NAVIGATION ARROWS (Desktop: Inside Edges | Mobile: REMOVED) */
+/* ========================================= */
 .services-slider-container .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--accent-orange); /* Permanent vibrant orange background */
-    color: var(--bg-main);            /* Dark high-contrast arrow icon */
+    background: var(--accent-orange); 
+    color: var(--bg-main);            
     border: 1px solid var(--accent-orange);
     width: 48px;
     height: 48px;
@@ -577,7 +657,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     justify-content: center;
     transition: all 0.3s ease;
     z-index: 100;
-    box-shadow: 0 0 20px rgba(255, 126, 95, 0.6); /* Permanent orange glow */
+    box-shadow: 0 0 20px rgba(255, 126, 95, 0.6); 
 }
 .services-slider-container .slider-btn.service-prev { left: 15px; } 
 .services-slider-container .slider-btn.service-next { right: 15px; } 
@@ -589,15 +669,11 @@ input:checked + .slider:before { transform: translateX(26px); }
     transform: translateY(-50%) scale(1.1);
 }
 
+/* Remove navigation buttons completely on mobile view (swipe & dots handle navigation) */
 @media (max-width: 768px) {
     .services-slider-container .slider-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
-        display: flex !important; /* Ensure arrows are always visible on mobile too */
+        display: none !important;
     }
-    .services-slider-container .slider-btn.service-prev { left: 8px; }
-    .services-slider-container .slider-btn.service-next { right: 8px; }
 }
 
 /* ========================================= */
