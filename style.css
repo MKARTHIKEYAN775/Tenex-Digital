@@ -221,7 +221,7 @@ img { max-width: 100%; height: auto; display: block; }
 input:checked + .slider:before { transform: translateX(26px); }
 
 /* ========================================= */
-/* DESKTOP BENTO GRID (Glassmorphism) */
+/* DESKTOP BENTO GRID (Glassmorphism) - Scaled for Laptop/Desktop */
 /* ========================================= */
 .why-us {
     position: relative;
@@ -233,17 +233,19 @@ input:checked + .slider:before { transform: translateX(26px); }
 .desktop-bento-container {
     background: rgba(18, 20, 28, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 28px;
-    padding: 30px;
+    border-radius: 20px;
+    padding: 20px;
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .bento-master-grid {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
-    gap: 24px;
+    gap: 16px;
 }
 
 /* Left Side Bento Grid */
@@ -251,7 +253,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
-    gap: 16px;
+    gap: 12px;
 }
 
 .bento-why-1 { grid-column: 1 / 2; grid-row: 1 / 3; }
@@ -266,7 +268,7 @@ input:checked + .slider:before { transform: translateX(26px); }
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 16px;
+    gap: 12px;
     position: relative;
 }
 
@@ -280,8 +282,8 @@ input:checked + .slider:before { transform: translateX(26px); }
     background: rgba(255, 255, 255, 0.045);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-top: 1px solid rgba(255, 255, 255, 0.22);
-    padding: 24px 20px;
-    border-radius: 18px;
+    padding: 16px 14px;
+    border-radius: 14px;
     transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     display: flex;
     flex-direction: column;
@@ -293,21 +295,61 @@ input:checked + .slider:before { transform: translateX(26px); }
     border-color: var(--accent-orange);
     border-top-color: var(--accent-orange);
     background: rgba(255, 255, 255, 0.085);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(255, 126, 95, 0.25), 0 0 25px rgba(218, 112, 214, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255, 126, 95, 0.2), 0 0 20px rgba(218, 112, 214, 0.15);
 }
 
 .bento-card .why-icon, .bento-card .stat-icon {
-    height: 48px; width: 48px; background: rgba(255,126,95,0.15); 
-    display: flex; align-items: center; justify-content: center; 
-    border-radius: 12px; margin-bottom: 15px; color: var(--accent-orange);
+    height: 38px; 
+    width: 38px; 
+    background: rgba(255,126,95,0.15); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 10px; 
+    margin-bottom: 10px; 
+    color: var(--accent-orange);
 }
-.bento-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: #ffffff; }
-.bento-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
 
-.bento-right-side .bento-card { text-align: center; align-items: center; }
-.bento-right-side .bento-card h3 { font-size: 2.2rem; display: inline-block; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0; }
-.bento-right-side .bento-card span { font-size: 1.5rem; display: inline-block; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+.bento-card .why-icon img, .bento-card .stat-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.bento-card h3 { 
+    font-size: 1rem; 
+    margin-bottom: 6px; 
+    color: #ffffff; 
+}
+
+.bento-card p { 
+    font-size: 0.8rem; 
+    color: var(--text-muted); 
+    line-height: 1.4; 
+}
+
+.bento-right-side .bento-card { 
+    text-align: center; 
+    align-items: center; 
+}
+
+.bento-right-side .bento-card h3 { 
+    font-size: 1.8rem; 
+    display: inline-block; 
+    background: var(--gradient-text); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    margin-bottom: 0; 
+}
+
+.bento-right-side .bento-card span { 
+    font-size: 1.2rem; 
+    display: inline-block; 
+    background: var(--gradient-text); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    font-weight: 700; 
+}
 
 .mobile-why-arc-wrapper, .mobile-stats-section { display: none; }
 .mobile-services-arc-wrapper { display: none; }
@@ -952,3 +994,50 @@ input:checked + .slider:before { transform: translateX(26px); }
         display: none !important;
     }
 }
+
+/* ========================================= */
+/* BENTO CARDS BACKGROUND MAPPINGS           */
+/* ========================================= */
+
+/* Base setup for all bento cards to support backgrounds */
+.bento-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(20, 22, 32, 0.6) !important;
+}
+
+.bento-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Shared pseudo-element generator for card background images */
+.bento-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.65;
+    filter: saturate(1.5) brightness(1.2);
+    z-index: 0;
+    transition: all 0.4s ease;
+}
+
+.bento-card:hover::before {
+    opacity: 0.80;
+    filter: saturate(1.7) brightness(1.3);
+}
+
+/* Individual Background Image Assignments */
+.bento-why-1::before { background-image: url('assets/images/container_backgrounds/WCT-1.png'); }
+.bento-why-2::before { background-image: url('assets/images/container_backgrounds/WCT-2.png'); }
+.bento-why-3::before { background-image: url('assets/images/container_backgrounds/WCT-3.png'); }
+.bento-why-4::before { background-image: url('assets/images/container_backgrounds/WCT-4.png'); }
+.bento-why-5::before { background-image: url('assets/images/container_backgrounds/WCT-5.png'); }
+.bento-why-6::before { background-image: url('assets/images/container_backgrounds/WCT-6.png'); }
+
+.bento-stat-1::before { background-image: url('assets/images/container_backgrounds/STAT-1.png'); }
+.bento-stat-2::before { background-image: url('assets/images/container_backgrounds/STAT-2.png'); }
+.bento-stat-3::before { background-image: url('assets/images/container_backgrounds/STAT-3.png'); }
+.bento-stat-4::before { background-image: url('assets/images/container_backgrounds/STAT-4.png'); }
