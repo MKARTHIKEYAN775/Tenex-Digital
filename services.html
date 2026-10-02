@@ -8,11 +8,11 @@
     <link rel="icon" href="assets/logos/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="services.css">
 </head>
-<body>
+<body class="services-brutal">
     <!-- PAGE LOADER -->
     <div class="loader">
         <div class="loader-logo">
@@ -30,8 +30,8 @@
     </div>
 
     <!-- HEADER / NAVBAR -->
-    <header id="header">
-        <nav class="navbar">
+    <header id="header" class="sv-header">
+        <nav class="navbar sv-navbar">
             <div class="container">
                 <a href="index.html" class="logo">
                     <img src="assets/images/Navbar/logo_pr.png" alt="Brand Logo" class="logo-img">
@@ -40,12 +40,10 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <a href="contact.html" class="btn btn-outline">Let's Talk</a>
-                    <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
+                    <a href="contact.html" class="sv-btn sv-btn-pill">Get In Touch</a>
                 </div>
                 <button class="menu-toggle" aria-label="Toggle Navigation">
                     <span></span>
@@ -70,218 +68,207 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="mobile-buttons">
-                <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
+                <a href="contact.html" class="btn btn-primary">Get In Touch</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- SERVICES HERO SECTION -->
-        <section class="services-hero">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="section-tag">Comprehensive Solutions</span>
-                    <h1>Our Specialized Digital Services</h1>
-                    <p>We combine deep industry expertise, data-driven frameworks, and cutting-edge AI strategies to scale your business performance across every digital touchpoint.</p>
+        <!-- SV HERO: BLACK BLOCK -->
+        <section class="sv-hero">
+            <div class="sv-hero-noise"></div>
+            <div class="container sv-hero-inner">
+                <span class="sv-tag">/ SERVICES</span>
+                <h1 class="sv-hero-title">STRATEGY.<br>EXECUTION.<br>GROWTH.</h1>
+                <div class="sv-hero-bottom">
+                    <p class="sv-hero-desc">We handle the entire growth journey — from technical audits and paid acquisition to brand identity and conversion-ready websites.</p>
+                    <a href="#sv-list" class="sv-btn sv-btn-outline">VIEW ALL SERVICES ↓</a>
                 </div>
             </div>
         </section>
 
-        <!-- DETAILED SERVICES GRID / LISTINGS -->
-        <section class="detailed-services-section">
-            <div class="container">
-                
-                <!-- Service 1: SEO Optimization -->
-                <div class="service-detail-card" id="seo">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/seo.png" alt="SEO Optimization">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">01 / Organic Growth</span>
-                        <h2>SEO Optimization</h2>
-                        <p class="service-lead">Dominate search engine results pages (SERPs) and capture high-intent organic traffic that converts consistently over the long term.</p>
-                        <p>Our comprehensive search engine optimization service goes beyond basic keyword insertion. We perform rigorous technical audits, architecture enhancements, high-authority backlink acquisition, and granular semantic content engineering to ensure sustainable top-tier rankings on Google.</p>
-                        <ul class="service-features-list">
-                            <li>✓ Advanced Technical SEO & Core Web Vitals Audits</li>
-                            <li>✓ Keyword Gap Analysis & Semantic Topic Clustering</li>
-                            <li>✓ White-Hat Link Building & Digital PR</li>
-                            <li>✓ Local SEO & Google Business Profile Optimization</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Scale Your SEO</a>
-                        </div>
-                    </div>
+        <!-- SERVICE 01 — LIME BLOCK -->
+        <section class="sv-block sv-block-lime" id="seo">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/01</span>
+                    <h3 class="sv-mini-title">Organic Growth</h3>
+                    <p>Technical audits, semantic content engineering, and high-authority link building that compound over time instead of fading when the budget stops.</p>
                 </div>
-
-                <!-- Service 2: Performance Marketing -->
-                <div class="service-detail-card reverse" id="performance">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/performance.png" alt="Performance Marketing">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">02 / ROI Driven</span>
-                        <h2>Performance Marketing</h2>
-                        <p class="service-lead">ROI-focused campaigns designed to maximize every advertising rupee through rigorous data analytics, audience segmentation, and creative testing.</p>
-                        <p>We eliminate guesswork from paid media. By tracking conversion actions down to the granular level across multi-channel funnels, our growth engineers allocate budgets dynamically toward high-performing segments to optimize customer acquisition costs (CAC).</p>
-                        <ul class="service-features-list">
-                            <li>✓ Full-Funnel Paid Media Strategy</li>
-                            <li>✓ Multivariant Creative Testing Frameworks</li>
-                            <li>✓ Advanced Attribution Modeling & Tracking Setup</li>
-                            <li>✓ Continuous ROAS & CAC Optimization</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Boost Your ROAS</a>
-                        </div>
-                    </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">SEO<br>Optimization</h2>
+                    <p class="sv-lead">Dominate search results and capture high-intent organic traffic that converts consistently, month after month.</p>
+                    <ul class="sv-feature-list">
+                        <li>Technical SEO & Core Web Vitals Audits</li>
+                        <li>Keyword Gap Analysis & Topic Clustering</li>
+                        <li>White-Hat Link Building & Digital PR</li>
+                        <li>Local SEO & Google Business Optimization</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-dark">Scale Your SEO</a>
                 </div>
-
-                <!-- Service 3: Google Ads -->
-                <div class="service-detail-card" id="google-ads">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/google-ads.png" alt="Google Ads">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">03 / Intent Capture</span>
-                        <h2>Google Ads (PPC)</h2>
-                        <p class="service-lead">Intercept customers at the exact moment of high commercial intent when they are actively searching for your products or solutions.</p>
-                        <p>Leveraging high-converting search intent campaigns, display networks, YouTube ads, and performance max structures, we place your brand directly in front of buyers ready to transact, ensuring maximum click-through quality and minimal wasted ad spend.</p>
-                        <ul class="service-features-list">
-                            <li>✓ High-Intent Search Campaign Architecture</li>
-                            <li>✓ Performance Max & Display Network Scaling</li>
-                            <li>✓ Negative Keyword Guardrails & Bid Adjustments</li>
-                            <li>✓ Conversion Rate Landing Page Alignment</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Launch Google Ads</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 4: Social Media Marketing -->
-                <div class="service-detail-card reverse" id="social-media">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/social-media.png" alt="Social Media Marketing">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">04 / Brand Engagement</span>
-                        <h2>Social Media Marketing</h2>
-                        <p class="service-lead">Build magnetic brand communities and powerful organic and paid presence across Instagram, Facebook, LinkedIn, and emerging platforms.</p>
-                        <p>Social media is more than posting pictures—it's about storytelling and relationship building. Our team crafts viral-ready creative assets, manages community interactions, and runs targeted social campaigns that turn casual scrollers into brand advocates.</p>
-                        <ul class="service-features-list">
-                            <li>✓ Multi-Platform Content Calendars & Reels Production</li>
-                            <li>✓ Meta Ads (Instagram & Facebook) Lead Gen</li>
-                            <li>✓ B2B Thought Leadership & LinkedIn Scaling</li>
-                            <li>✓ Community Management & Audience Growth</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Grow Social Presence</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 5: Branding & Identity -->
-                <div class="service-detail-card" id="branding">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/branding.png" alt="Branding">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">05 / Visual Identity</span>
-                        <h2>Logo & Brand Identity</h2>
-                        <p class="service-lead">Craft a memorable, premium brand position that commands instant trust, market differentiation, and long-term customer loyalty.</p>
-                        <p>Your brand is what people say about you when you leave the room. We design striking visual identities—from iconic logos and typography systems to comprehensive brand guidelines—that resonate deeply with your ideal customer demographic.</p>
-                        <ul class="service-features-list">
-                            <li>✓ Unique Logo Design & Visual Asset Suites</li>
-                            <li>✓ Comprehensive Brand Guidelines & Tone of Voice</li>
-                            <li>✓ Packaging & Collateral Design Systems</li>
-                            <li>✓ Brand Positioning & Competitive Differentiation</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Elevate Your Brand</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 6: Website Development -->
-                <div class="service-detail-card reverse" id="website-design">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/website-design.png" alt="Website Development">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">06 / High Conversion</span>
-                        <h2>Website Development</h2>
-                        <p class="service-lead">Blazing-fast, fully responsive, and visually striking websites engineered from the ground up to convert visitors into qualified leads.</p>
-                        <p>A mediocre website leaks marketing budget. We engineer high-performance web experiences utilizing modern tech stacks, immaculate UX/UI design, mobile responsiveness, and SEO-friendly architectures that convert traffic into revenue effortlessly.</p>
-                        <ul class="service-features-list">
-                            <li>✓ Custom Responsive UI/UX Design</li>
-                            <li>✓ Lightning-Fast Speed & Core Web Vitals Optimization</li>
-                            <li>✓ E-Commerce & Lead Funnel Integration</li>
-                            <li>✓ Secure, Scalable, & SEO-Ready Codebases</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Build Your Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 7: Content Marketing -->
-                <div class="service-detail-card" id="content">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/content.png" alt="Content Marketing">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">07 / Authority Building</span>
-                        <h2>Content Marketing</h2>
-                        <p class="service-lead">Strategic, high-value content that educates your audience, establishes authoritative industry thought leadership, and drives inbound demand.</p>
-                        <p>Content is the fuel for your digital engine. We develop comprehensive content strategies including long-form articles, whitepapers, case studies, and email sequences designed to nurture prospects through every stage of the sales funnel.</p>
-                        <ul class="service-features-list">
-                            <li>✓ Data-Backed Editorial Strategy & Calendars</li>
-                            <li>✓ Long-Form SEO Articles & In-Depth Guides</li>
-                            <li>✓ Lead Magnets, E-Books, & Whitepapers</li>
-                            <li>✓ High-Converting Email Newsletter Sequences</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Enhance Content</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 8: Analytics & CRO -->
-                <div class="service-detail-card reverse" id="email">
-                    <div class="service-detail-icon">
-                        <img src="assets/images/services/email.png" alt="Analytics & CRO">
-                    </div>
-                    <div class="service-detail-content">
-                        <span class="service-number">08 / Conversion Optimization</span>
-                        <h2>Analytics & CRO</h2>
-                        <p class="service-lead">Measure, analyze, and continuously optimize your complete marketing funnel and user pathways for maximum conversion yields.</p>
-                        <p>Stop guessing why users bounce. Through advanced heatmapping, user session recording, A/B split testing, and deep Google Analytics event tracking, we identify friction points and optimize your conversion rates to extract maximum value from existing traffic.</p>
-                        <ul class="service-features-list">
-                            <li>✓ Advanced Google Analytics 4 (GA4) Implementation</li>
-                            <li>✓ Heatmaps & Session Recording Analysis</li>
-                            <li>✓ A/B Split Testing & Funnel Friction Removal</li>
-                            <li>✓ Custom Real-Time Executive Dashboards</li>
-                        </ul>
-                        <div class="service-action-row">
-                            <a href="contact.html" class="btn btn-primary">Optimize Conversions</a>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- CTA SECTION -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-wrapper">
-                    <div class="cta-content">
-                        <span class="section-tag">Let's Grow Together</span>
-                        <h2>Ready To Scale Your Business With Our Expert Services?</h2>
-                        <div class="cta-buttons">
-                            <a href="contact.html" class="btn btn-primary">Book Free Strategy Call</a>
-                        </div>
-                    </div>
+        <!-- SERVICE 02 — BLACK BLOCK -->
+        <section class="sv-block sv-block-dark" id="performance">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/02</span>
+                    <h3 class="sv-mini-title">ROI Driven</h3>
+                    <p>No guesswork. We track conversions at a granular level across multi-channel funnels and reallocate budget toward what actually performs.</p>
                 </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">Performance<br>Marketing</h2>
+                    <p class="sv-lead">Campaigns engineered to maximize every rupee of ad spend through data, segmentation, and relentless testing.</p>
+                    <ul class="sv-feature-list">
+                        <li>Full-Funnel Paid Media Strategy</li>
+                        <li>Multivariant Creative Testing</li>
+                        <li>Advanced Attribution & Tracking</li>
+                        <li>Continuous ROAS & CAC Optimization</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-lime">Boost Your ROAS</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 03 — LIME BLOCK -->
+        <section class="sv-block sv-block-lime" id="google-ads">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/03</span>
+                    <h3 class="sv-mini-title">Intent Capture</h3>
+                    <p>Search, Display, YouTube and Performance Max — placed in front of buyers at the exact moment they're ready to act.</p>
+                </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">Google Ads<br>(PPC)</h2>
+                    <p class="sv-lead">Intercept customers the second they start searching for a solution you already provide.</p>
+                    <ul class="sv-feature-list">
+                        <li>High-Intent Search Campaign Architecture</li>
+                        <li>Performance Max & Display Scaling</li>
+                        <li>Negative Keyword Guardrails</li>
+                        <li>Landing Page Conversion Alignment</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-dark">Launch Google Ads</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 04 — BLACK BLOCK -->
+        <section class="sv-block sv-block-dark" id="social-media">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/04</span>
+                    <h3 class="sv-mini-title">Brand Engagement</h3>
+                    <p>Storytelling and community, not just posting. We turn scrollers into followers and followers into customers.</p>
+                </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">Social Media<br>Marketing</h2>
+                    <p class="sv-lead">Build a magnetic presence across Instagram, Meta, LinkedIn, and every platform that matters to your audience.</p>
+                    <ul class="sv-feature-list">
+                        <li>Content Calendars & Reels Production</li>
+                        <li>Meta Ads Lead Generation</li>
+                        <li>B2B Thought Leadership on LinkedIn</li>
+                        <li>Community Management & Growth</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-lime">Grow Social Presence</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 05 — LIME BLOCK -->
+        <section class="sv-block sv-block-lime" id="branding">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/05</span>
+                    <h3 class="sv-mini-title">Visual Identity</h3>
+                    <p>Your brand is what people say when you leave the room. We make sure it's worth repeating.</p>
+                </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">Logo & Brand<br>Identity</h2>
+                    <p class="sv-lead">A premium brand position that earns instant trust and stands apart in a crowded market.</p>
+                    <ul class="sv-feature-list">
+                        <li>Logo Design & Visual Asset Suites</li>
+                        <li>Brand Guidelines & Tone of Voice</li>
+                        <li>Packaging & Collateral Systems</li>
+                        <li>Positioning & Differentiation</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-dark">Elevate Your Brand</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 06 — BLACK BLOCK -->
+        <section class="sv-block sv-block-dark" id="website-design">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/06</span>
+                    <h3 class="sv-mini-title">High Conversion</h3>
+                    <p>A mediocre website leaks budget. We build fast, clean, revenue-ready experiences instead.</p>
+                </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">Website<br>Development</h2>
+                    <p class="sv-lead">Blazing-fast, fully responsive, visually striking sites engineered to convert visitors into leads.</p>
+                    <ul class="sv-feature-list">
+                        <li>Custom Responsive UI/UX Design</li>
+                        <li>Core Web Vitals Speed Optimization</li>
+                        <li>E-Commerce & Lead Funnel Integration</li>
+                        <li>Secure, Scalable, SEO-Ready Code</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-lime">Build Your Website</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 07 — LIME BLOCK -->
+        <section class="sv-block sv-block-lime" id="content">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/07</span>
+                    <h3 class="sv-mini-title">Authority Building</h3>
+                    <p>Content is the fuel for your digital engine — written to educate, rank, and nurture at every stage.</p>
+                </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">Content<br>Marketing</h2>
+                    <p class="sv-lead">High-value content that builds authority and drives consistent inbound demand.</p>
+                    <ul class="sv-feature-list">
+                        <li>Editorial Strategy & Calendars</li>
+                        <li>Long-Form SEO Articles & Guides</li>
+                        <li>Lead Magnets & Whitepapers</li>
+                        <li>Email Newsletter Sequences</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-dark">Enhance Content</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICE 08 — BLACK BLOCK -->
+        <section class="sv-block sv-block-dark" id="email">
+            <div class="container sv-block-grid">
+                <div class="sv-block-left">
+                    <span class="sv-num">/08</span>
+                    <h3 class="sv-mini-title">Conversion Optimization</h3>
+                    <p>Stop guessing why users bounce. Heatmaps, session recordings, and A/B tests tell you exactly where you're losing them.</p>
+                </div>
+                <div class="sv-block-right">
+                    <h2 class="sv-big-title">Analytics<br>& CRO</h2>
+                    <p class="sv-lead">Measure, analyze, and continuously optimize your funnel for maximum conversion yield.</p>
+                    <ul class="sv-feature-list">
+                        <li>GA4 Implementation & Tracking</li>
+                        <li>Heatmaps & Session Recordings</li>
+                        <li>A/B Split Testing</li>
+                        <li>Real-Time Executive Dashboards</li>
+                    </ul>
+                    <a href="contact.html" class="sv-btn sv-btn-lime">Optimize Conversions</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSING CTA — LIME BLOCK WITH CIRCLE -->
+        <section class="sv-cta">
+            <div class="container sv-cta-inner">
+                <span class="sv-tag sv-tag-dark">/ LET'S BUILD</span>
+                <h2 class="sv-cta-title">READY TO MAKE<br>YOUR MARKETING<br>WORK HARDER?</h2>
+                <a href="contact.html" class="sv-btn sv-btn-dark sv-btn-lg">Book Free Strategy Call</a>
             </div>
         </section>
     </main>

@@ -31,43 +31,46 @@ if (!$data) {
     exit;
 }
 
+// Basic server-side validation — the client's "required" attribute can be bypassed,
+// so re-check here before touching the database.
+$fullName = trim($data['fullName'] ?? '');
+$workEmail = trim($data['workEmail'] ?? '');
+$phoneNum = trim($data['phoneNum'] ?? '');
+
+$errors = [];
+if ($fullName === '') {
+    $errors[] = 'Full name is required.';
+}
+if ($workEmail === '' || !filter_var($workEmail, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'A valid email address is required.';
+}
+if ($phoneNum === '' || !preg_match('/^[0-9+\-\s()]{7,20}$/', $phoneNum)) {
+    $errors[] = 'A valid phone number is required.';
+}
+
+if (!empty($errors)) {
+    http_response_code(422);
+    echo json_encode(['success' => false, 'error' => implode(' ', $errors)]);
+    exit;
+}
+
 try {
     // Prepare SQL insert statement
     $sql = "INSERT INTO contact_submissions (
-                full_name, work_email, phone_num, company_name, website_url, 
-                industry_sector, monthly_revenue, business_model, team_size, 
-                services_needed, monthly_ad_spend, timeframe, primary_bottleneck, success_vision
+                full_name, work_email, phone_num
             ) VALUES (
-                :full_name, :work_email, :phone_num, :company_name, :website_url, 
-                :industry_sector, :monthly_revenue, :business_model, :team_size, 
-                :services_needed, :monthly_ad_spend, :timeframe, :primary_bottleneck, :success_vision
+                :full_name, :work_email, :phone_num
             )";
 
     $stmt = $pdo->prepare($sql);
 
-    // Format services array safely for PostgreSQL text[] type
-    $services = isset($data['servicesNeeded']) && is_array($data['servicesNeeded']) 
-                ? '{' . implode(',', array_map(fn($s) => '"' . str_replace('"', '\"', $s) . '"', $data['servicesNeeded'])) . '}' 
-                : '{}';
-
     $stmt->execute([
-        ':full_name' => $data['fullName'] ?? '',
-        ':work_email' => $data['workEmail'] ?? '',
-        ':phone_num' => $data['phoneNum'] ?? '',
-        ':company_name' => $data['companyName'] ?? '',
-        ':website_url' => $data['websiteUrl'] ?? null,
-        ':industry_sector' => $data['industrySector'] ?? '',
-        ':monthly_revenue' => $data['monthlyRevenue'] ?? '',
-        ':business_model' => $data['businessModel'] ?? '',
-        ':team_size' => $data['teamSize'] ?? '',
-        ':services_needed' => $services,
-        ':monthly_ad_spend' => $data['monthlyAdSpend'] ?? '',
-        ':timeframe' => $data['timeframe'] ?? '',
-        ':primary_bottleneck' => $data['primaryBottleneck'] ?? '',
-        ':success_vision' => $data['successVision'] ?? ''
+        ':full_name' => $fullName,
+        ':work_email' => $workEmail,
+        ':phone_num' => $phoneNum
     ]);
 
-    echo json_encode(['success' => true, 'message' => 'Intake profile stored successfully in database']);
+    echo json_encode(['success' => true, 'message' => 'Thanks! We will reach out shortly.']);
 
 } catch (PDOException $e) {
     http_response_code(500);
