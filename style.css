@@ -126,7 +126,7 @@ img { max-width: 100%; height: auto; display: block; }
 .logo svg { height: 28px; width: 28px; }
 .logo-img { height: 80px; width: auto; display: block; object-fit: contain; }
 
-.nav-links { display: flex; gap: 40px; align-items: center; }
+.nav-links { display: flex; gap: 70px; align-items: center; }
 .nav-links a { white-space: nowrap; font-size: 1.0rem; transition: color 0.3s; font-weight: 500; }
 .nav-links a:hover, .nav-links a.active { color: var(--accent-orange); }
 .nav-actions { display: flex; gap: 12px; align-items: center; }
