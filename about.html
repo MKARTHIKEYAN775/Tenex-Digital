@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Brandify Digital</title>
+    <meta name="description" content="Meet the Bengaluru team behind Brandify Digital. We run SEO, performance marketing, branding and web projects that are measured in customers, not clicks.">
+    <link rel="icon" href="assets/logos/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Anton&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body class="about-page">
+    <!-- PAGE LOADER -->
+    <div class="loader">
+        <div class="loader-logo">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+                <path d="M12 2L2 22H22L12 2Z" fill="url(#paint_loader)"/>
+                <defs>
+                    <linearGradient id="paint_loader" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#ff7e5f"/>
+                        <stop offset="1" stop-color="#da70d6"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+        <div class="loader-line"></div>
+    </div>
+
+    <!-- HEADER / NAVBAR -->
+    <header id="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/Navbar/logo_pr.png" alt="Brand Logo" class="logo-img">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/Navbar/logo_pr.png" alt="Brand Logo" class="logo-img">
+                </a>
+                <button class="close-menu">✕</button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-buttons">
+                <a href="contact.html" class="btn btn-primary">Book Strategy Call</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <section class="ab-hero">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">Brandify / The agency issue</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">2026 edition</span>
+
+            <div class="ab-wrap ab-hero-grid">
+                <figure class="ab-hero-left">
+                    <!-- IMAGE: --img-hero-left -->
+                    <div class="ab-img img-hero-left" role="img" aria-label="Portrait of a creative from the Brandify team"></div>
+                    <figcaption class="ab-cap">Creative minds.<br>Real impact.</figcaption>
+                    <!-- IMAGE: --img-hero-left-2 -->
+                    <div class="ab-img ab-fill img-hero-left-2" role="img" aria-label="Detail shot from a Brandify shoot"></div>
+                </figure>
+
+                <div class="ab-hero-copy">
+                    <h1>We build brands <span>that move people.</span></h1>
+                    <p class="ab-hero-text">SEO, paid media, branding and web development, planned together by one Bengaluru team and reported in one set of numbers.</p>
+                    <a href="contact.html" class="ab-btn">Start a project</a>
+
+                    <div class="ab-hero-meta">
+                        <div><span>Based in</span><p>Bengaluru, India</p></div>
+                        <div><span>Works with</span><p>Startups, local businesses and established brands</p></div>
+                        <div><span>What we do</span><p>SEO, paid media, branding and web</p></div>
+                        <div><span>Reply time</span><p>Within 4 business hours</p></div>
+                    </div>
+                </div>
+
+                <div class="ab-hero-right">
+                    <!-- IMAGE: --img-hero-right-top -->
+                    <div class="ab-img img-hero-right-top" role="img" aria-label="Brand campaign portrait"></div>
+                    <figure>
+                        <!-- IMAGE: --img-hero-right-bottom -->
+                        <div class="ab-img img-hero-right-bottom" role="img" aria-label="Black and white portrait from a brand campaign"></div>
+                        <figcaption class="ab-cap">Brand campaigns.<br>Digital experiences.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="ab-story-col">
+                    <div class="ab-story" aria-hidden="true">Story</div>
+                    <span class="ab-vert-mono" aria-hidden="true">Bengaluru, India</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ STUDIO IMAGE + ABOUT US ============ -->
+        <section class="ab-studio">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">About us</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 01</span>
+
+            <div class="ab-wrap ab-studio-grid">
+                <div class="ab-studio-side">
+                    <div>
+                        <p class="ab-label">About us</p>
+                        <p class="ab-side-copy">A growth marketing team in Bengaluru. We combine SEO, paid media, branding and web development, so your business gets one plan, one team and one set of numbers.</p>
+                    </div>
+                    <div class="ab-studio-side-media">
+                        <!-- IMAGE: --img-studio-side -->
+                        <div class="ab-img img-studio-side" role="img" aria-label="Close-up from inside the Brandify studio"></div>
+                        <span class="ab-vert-mono" aria-hidden="true">Inside the studio</span>
+                    </div>
+                    <p class="ab-count">01 / 04</p>
+                </div>
+                <div class="ab-studio-media">
+                    <!-- IMAGE: --img-studio-back -->
+                    <div class="ab-img img-studio-back" role="img" aria-label="Brandify studio, background view"></div>
+                    <!-- IMAGE: --img-studio-main -->
+                    <div class="ab-img img-studio-main" role="img" aria-label="The Brandify team working at their desks"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FOUNDERS' NOTE ============ -->
+        <section class="ab-section ab-note" id="letter">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">A note from the founders</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 02</span>
+
+            <div class="ab-wrap">
+                <div class="ab-note-grid">
+                    <div class="ab-note-left">
+                        <p class="ab-label ab-label-tick">A note from the founders</p>
+                        <h2>Most agencies sell activity. We sell customers.</h2>
+                        <!-- IMAGE: --img-founders -->
+                        <div class="ab-img ab-fill img-founders" role="img" aria-label="The Brandify founders"></div>
+                    </div>
+                    <div class="ab-note-right">
+                        <div class="ab-note-copy">
+                            <p>We started Brandify after seeing the same pattern at too many businesses: a good product, a decent website, and a monthly report full of impressions that never turned into revenue.</p>
+                            <p>So we built the agency we wished those businesses had. Strategy, creative and tracking sit in the same room. When a campaign underperforms, we change the plan instead of changing the slide deck.</p>
+                            <p>Today we work with startups, local businesses and established brands. The size varies, but the rule stays the same: if we can't show how the work moved your numbers, it doesn't count.</p>
+                            <p class="ab-sign">The Brandify team, Bengaluru</p>
+                        </div>
+                        <ul class="ab-perks">
+                            <li><span>One plan</span>Strategy, creative and tracking planned together for every channel.</li>
+                            <li><span>Real goals</span>Leads, cost per customer and return on ad spend, set before launch.</li>
+                            <li><span>Plain reports</span>A monthly report on what worked, what didn't and what changes next.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ab-promise-wrap">
+                    <blockquote class="ab-promise">
+                        <p>If we can't show how the work moved your numbers, it doesn't count.</p>
+                        <cite>The Brandify promise</cite>
+                    </blockquote>
+                    <div class="ab-vword ab-vword-outline" aria-hidden="true">Promise</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FOUR RULES ============ -->
+        <section class="ab-section ab-rules" id="rules">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">Four rules we work by</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 03</span>
+
+            <div class="ab-wrap ab-rules-grid">
+                <div class="ab-rules-left">
+                    <h2>The rules behind the growth</h2>
+                    <!-- IMAGE: --img-rules-left -->
+                    <div class="ab-img ab-fill img-rules-left" role="img" aria-label="Team at work, black and white"></div>
+                </div>
+
+                <ol class="ab-rule-list">
+                    <li class="ab-rule">
+                        <span class="ab-rule-num">01 /</span>
+                        <div>
+                            <h3>Revenue is the scoreboard</h3>
+                            <p>Traffic, followers and impressions only matter when they lead to enquiries and sales. We set goals around leads, cost per customer and return on ad spend before we launch anything.</p>
+                        </div>
+                    </li>
+                    <li class="ab-rule">
+                        <span class="ab-rule-num">02 /</span>
+                        <div>
+                            <h3>Plain-English reporting</h3>
+                            <p>Live dashboards and a monthly report that says what worked, what didn't and what we're changing next.</p>
+                        </div>
+                    </li>
+                    <li class="ab-rule">
+                        <span class="ab-rule-num">03 /</span>
+                        <div>
+                            <h3>No lock-in</h3>
+                            <p>Flexible agreements. You stay because the results are good, not because of a contract.</p>
+                        </div>
+                    </li>
+                    <li class="ab-rule">
+                        <span class="ab-rule-num">04 /</span>
+                        <div>
+                            <h3>One team, every channel</h3>
+                            <p>Your SEO lead, ad manager and designer share a plan, so the ad, the landing page and the follow-up all say the same thing.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="ab-statement">
+                    <h2>Less noise.<br>More customers.</h2>
+                    <!-- IMAGE: --img-rules-right -->
+                    <div class="ab-img ab-fill img-rules-right" role="img" aria-label="Orange-toned portrait"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FOUR-IMAGE STRIP ============ -->
+        <section class="ab-strip" aria-label="Our work">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">Our work</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 04</span>
+
+            <div class="ab-wrap ab-vbody">
+                <div class="ab-vword ab-vword-outline" aria-hidden="true">Work</div>
+                <div class="ab-strip-grid">
+                    <a class="ab-strip-item" href="services.html#social-media">
+                        <!-- IMAGE: --img-strip-1 -->
+                        <div class="ab-img img-strip-1" role="img" aria-label="Social media campaign visual"></div>
+                        <span class="ab-strip-cap"><span>Social media campaign</span><i></i><span>01</span></span>
+                    </a>
+                    <a class="ab-strip-item" href="services.html#branding">
+                        <!-- IMAGE: --img-strip-2 -->
+                        <div class="ab-img img-strip-2" role="img" aria-label="Brand strategy visual"></div>
+                        <span class="ab-strip-cap"><span>Brand strategy</span><i></i><span>02</span></span>
+                    </a>
+                    <a class="ab-strip-item" href="services.html#performance">
+                        <!-- IMAGE: --img-strip-3 -->
+                        <div class="ab-img img-strip-3" role="img" aria-label="Performance marketing visual"></div>
+                        <span class="ab-strip-cap"><span>Performance marketing</span><i></i><span>03</span></span>
+                    </a>
+                    <a class="ab-strip-item" href="services.html#content">
+                        <!-- IMAGE: --img-strip-4 -->
+                        <div class="ab-img img-strip-4" role="img" aria-label="Content creation visual"></div>
+                        <span class="ab-strip-cap"><span>Content creation</span><i></i><span>04</span></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SERVICES INDEX ============ -->
+        <section class="ab-section ab-services" id="contents">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">Services</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 05</span>
+
+            <div class="ab-wrap ab-services-grid">
+                <div class="ab-services-left">
+                    <p class="ab-label ab-label-tick">Services</p>
+                    <h2>What we do, start to finish</h2>
+                    <p class="ab-side-copy">One partner instead of three or four vendors.</p>
+                    <!-- IMAGE: --img-services -->
+                    <div class="ab-img ab-fill img-services" role="img" aria-label="Brandify team planning a campaign"></div>
+                </div>
+                <nav class="ab-toc" aria-label="Services">
+                    <a href="services.html#seo"><span>01</span><div><strong>SEO Optimization</strong><em>Show up for the searches your customers already make.</em></div></a>
+                    <a href="services.html#performance"><span>02</span><div><strong>Performance Marketing</strong><em>Paid campaigns built around leads and cost per customer.</em></div></a>
+                    <a href="services.html#google-ads"><span>03</span><div><strong>Google Ads</strong><em>Search and display ads tied to return on ad spend.</em></div></a>
+                    <a href="services.html#social-media"><span>04</span><div><strong>Social Media Marketing</strong><em>Content and campaigns that keep your brand in the feed.</em></div></a>
+                    <a href="services.html#branding"><span>05</span><div><strong>Logo &amp; Brand Identity</strong><em>A name, a look and a voice people remember.</em></div></a>
+                    <a href="services.html#website-design"><span>06</span><div><strong>Website Development</strong><em>Fast, clear sites built to turn visitors into enquiries.</em></div></a>
+                    <a href="services.html#content"><span>07</span><div><strong>Content Marketing</strong><em>Articles, video and posts that earn attention and trust.</em></div></a>
+                    <a href="services.html#email"><span>08</span><div><strong>Analytics &amp; CRO</strong><em>Track what happens, then fix what loses customers.</em></div></a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- ============ OUR IMPACT ============ -->
+        <section class="ab-impact" id="numbers">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">Our impact</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 06</span>
+
+            <div class="ab-wrap ab-impact-grid">
+                <h2 class="ab-sr">Our impact</h2>
+                <div class="ab-vword ab-vword-outline" aria-hidden="true">Impact</div>
+                <div class="ab-stat">
+                    <p class="ab-stat-name">Businesses scaled</p>
+                    <b><span class="counter" data-target="150">0</span><span class="unit">+</span></b>
+                </div>
+                <div class="ab-stat">
+                    <p class="ab-stat-name">Revenue generated</p>
+                    <b><span class="counter" data-target="35">0</span><span class="unit">Cr+</span></b>
+                </div>
+                <div class="ab-stat">
+                    <p class="ab-stat-name">Average campaign ROI</p>
+                    <b><span class="counter" data-target="420">0</span><span class="unit">%</span></b>
+                </div>
+                <div class="ab-stat">
+                    <p class="ab-stat-name">Client retention</p>
+                    <b><span class="counter" data-target="98">0</span><span class="unit">%</span></b>
+                </div>
+                <p class="ab-impact-note">Different goals.<br>Same outcome: real growth.</p>
+            </div>
+        </section>
+
+        <!-- ============ TEAM (replace with your real team) ============ -->
+        <!-- <section class="ab-section ab-team" id="people">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">The people</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 07</span>
+
+            <div class="ab-wrap">
+                <div class="ab-section-head">
+                    <div>
+                        <p class="ab-label ab-label-tick">The people</p>
+                        <h2>Meet the team</h2>
+                    </div>
+                    <p class="ab-side-copy">Your SEO lead, ad manager and designer work from one plan, and you can reach them directly.</p>
+                </div>
+                <div class="ab-vbody">
+                    <div class="ab-vword ab-vword-outline" aria-hidden="true">People</div>
+                    <div class="ab-team-grid">
+                        <div class="ab-member">
+                            <div class="ab-portrait" data-initials="AK">
+                                <div class="ab-img img-team-1" role="img" aria-label="Portrait of the founder"></div>
+                            </div>
+                            <h3>Founder Name</h3>
+                            <p class="ab-role">Founder &amp; Growth Strategist</p>
+                            <p>Leads strategy and client planning. Add a one-line background here.</p>
+                        </div>
+                        <div class="ab-member">
+                            <div class="ab-portrait" data-initials="PS">
+                                <div class="ab-img img-team-2" role="img" aria-label="Portrait of the head of performance marketing"></div>
+                            </div>
+                            <h3>Team Member</h3>
+                            <p class="ab-role">Head of Performance Marketing</p>
+                            <p>Manages paid media and conversion tracking. Add a one-line background here.</p>
+                        </div>
+                        <div class="ab-member">
+                            <div class="ab-portrait" data-initials="RN">
+                                <div class="ab-img img-team-3" role="img" aria-label="Portrait of the creative and web lead"></div>
+                            </div>
+                            <h3>Team Member</h3>
+                            <p class="ab-role">Creative &amp; Web Lead</p>
+                            <p>Owns branding, design and website builds. Add a one-line background here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- ============ CTA BANNER ============ -->
+        <section class="ab-cta-section" id="subscribe">
+            <span class="ab-rail ab-rail-l" aria-hidden="true">Let's work together</span>
+            <span class="ab-rail ab-rail-r" aria-hidden="true">Page 08</span>
+
+            <div class="ab-wrap">
+                <!-- IMAGE: --img-cta-bg -->
+                <div class="ab-cta">
+                    <div class="ab-cta-copy">
+                        <p class="ab-label ab-label-tick">Let's work together</p>
+                        <h2>Have a good story to tell?</h2>
+                        <p class="ab-cta-sub">Book a free strategy call. A strategist replies within 4 business hours.</p>
+                    </div>
+                    <a href="contact.html" class="ab-btn">
+                        Start a conversation
+                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" aria-hidden="true"><path d="M1.5 1.5L6 6l-4.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <div class="ab-vword ab-vword-outline" aria-hidden="true">Talk</div>
+                </div>
+                <address class="ab-address">
+                    <span>BTM Layout, Phase 2, Bengaluru</span>
+                    <a href="mailto:info.tenexdigital@gmail.com">info.tenexdigital@gmail.com</a>
+                    <a href="tel:+919110437827">+91 91104 37827</a>
+                </address>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/Navbar/logo_pr.png" alt="Brand Logo" class="logo-img">
+                    </a>
+                    <p>Helping businesses grow through AI-powered digital strategies.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Brandify Digital. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

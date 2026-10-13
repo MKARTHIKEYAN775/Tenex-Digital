@@ -436,13 +436,13 @@ input:checked + .slider:before { transform: translateX(26px); }
 
 /* Assign unique background images to each card */
 .services-track .service-card:nth-child(1)::before { background-image: url('assets/images/services/seo.png'); }
-.services-track .service-card:nth-child(2)::before { background-image: url('assets/images/services/performance.png'); }
-.services-track .service-card:nth-child(3)::before { background-image: url('assets/images/services/google-ads.png'); }
-.services-track .service-card:nth-child(4)::before { background-image: url('assets/images/services/social-media.png'); }
-.services-track .service-card:nth-child(5)::before { background-image: url('assets/images/services/branding.png'); }
-.services-track .service-card:nth-child(6)::before { background-image: url('assets/images/services/website-design.png'); }
-.services-track .service-card:nth-child(7)::before { background-image: url('assets/images/services/content.png'); }
-.services-track .service-card:nth-child(8)::before { background-image: url('assets/images/services/email.png'); }
+.services-track .service-card:nth-child(2)::before { background-image: url('assets/images/services/performancee.png'); }
+.services-track .service-card:nth-child(3)::before { background-image: url('assets/images/services/googleads.png'); }
+.services-track .service-card:nth-child(4)::before { background-image: url('assets/images/services/smm.png'); }
+.services-track .service-card:nth-child(5)::before { background-image: url('assets/images/services/logoandbrand.png'); }
+.services-track .service-card:nth-child(6)::before { background-image: url('assets/images/services/websitedeveelopment.png'); }
+.services-track .service-card:nth-child(7)::before { background-image: url('assets/images/services/contentmarketing.png'); }
+.services-track .service-card:nth-child(8)::before { background-image: url('assets/images/services/analytics.png'); }
 
 .services-track .service-card > * {
     position: relative;
@@ -495,8 +495,9 @@ input:checked + .slider:before { transform: translateX(26px); }
 .services-track .service-card.active::before {
     opacity: 0.45; 
     filter: saturate(1.5) brightness(1.25);
-    background-size: 320px;
-    background-position: right bottom;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .services-track .service-card.active h3 {
